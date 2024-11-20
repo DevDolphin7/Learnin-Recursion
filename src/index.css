@@ -1,0 +1,36 @@
+.page-container {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    bottom: 5%;
+    left: 5%;
+    display: grid;
+    grid-template:
+    "a c" 85%
+    "a c" 15% / 30% 70%;
+}
+
+.side-pane-container {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    margin-right: 5px;
+    border-right: 3px solid black;
+}  
+
+.main-pane-container {
+    grid-column: 2;
+    grid-row: 1;
+    margin-bottom: 1%;
+}
+
+.ui-pane-container {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.pane-borders {
+    border-style: outset;
+    border-radius: 10px;
+    border-width: 5px;
+    border-color: aqua;
+}
