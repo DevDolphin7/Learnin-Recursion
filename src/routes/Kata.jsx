@@ -8,7 +8,6 @@ function Kata() {
       <SidePane />
       <MainPane />
       <UserInterfacePane />
-      <p>Hurray hurray!</p>
     </div>
   );
 }
