@@ -1,14 +1,18 @@
-import SidePane from "../components/SidePane";
-import MainPane from "../components/MainPane";
-import UserInterfacePane from "../components/UserInterfacePane";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
     <div className="page-container">
-      <SidePane />
-      <MainPane />
-      <UserInterfacePane />
-      <p>Woop woop!</p>
+      <main>
+        <h1>Welcome to Learnin Recursion!</h1>
+        <p>Click a button below to get started:</p>
+        <Link to="/recursive-kata/1">
+          <button>Kata 1</button>
+        </Link>
+      </main>
+      <footer className="home-footer">
+        Created by Daniel Olver for Northcoders
+      </footer>
     </div>
   );
 }
