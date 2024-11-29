@@ -9,8 +9,8 @@ function SidePane() {
           src={RecursiveRunImg}
           alt="A screenshot of a recursive function that counts down the number of kilometers left in a run"
           style={{
-            "max-width": "90%",
-            "max-height": "90%",
+            maxWidth: "90%",
+            maxHeight: "90%",
           }}
         />
       </section>
