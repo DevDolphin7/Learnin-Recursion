@@ -1,83 +1,87 @@
 .page-container {
-    position: absolute;
-    top: 5%;
-    right: 5%;
-    bottom: 5%;
-    left: 5%;
-    display: grid;
-    grid-template:
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  bottom: 5%;
+  left: 5%;
+  display: grid;
+  grid-template:
     "a c" 85%
     "a c" 15% / 30% 70%;
 }
 
 .side-pane-container {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    margin-right: 5px;
-    border-right: 3px solid black;
-}  
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  margin-right: 5px;
+  border-right: 3px solid black;
+}
 
 .main-pane-container {
-    grid-column: 2;
-    grid-row: 1;
-    margin-bottom: 1%;
+  grid-column: 2;
+  grid-row: 1;
+  margin-bottom: 1%;
 }
 
 .ui-pane-container {
-    grid-column: 2;
-    grid-row: 2;
+  grid-column: 2;
+  grid-row: 2;
 }
 
 .home-footer {
-    grid-column: 2;
-    grid-row: 2;
-    display: flex;
-    justify-content: end;
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  justify-content: end;
 }
 
 .code-image {
-    grid-column: 1;
-    grid-row: 1;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  grid-column: 1;
+  grid-row: 1;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.test-class.resize {
+  max-width: 100%;
+  height: auto;
 }
 
 .call-stack-container {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    height: 60%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  height: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .call-stack {
-    height: 100%;
-    width: 100%;
-    margin: 5%;
-    border: 3px solid #443344;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content:flex-start;
-    align-items: center;
+  height: 90%;
+  width: 90%;
+  border: 3px solid #443344;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .call-stack-item {
-    width: 90%;
-    height: 15%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    border-top: 3px solid #443344;
+  width: 90%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  border-top: 3px solid #443344;
 }
 
 .pane-borders {
-    border-style: outset;
-    border-radius: 10px;
-    border-width: 5px;
-    border-color: aqua;
+  border-style: outset;
+  border-radius: 10px;
+  border-width: 5px;
+  border-color: aqua;
 }
