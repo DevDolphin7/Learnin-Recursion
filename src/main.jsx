@@ -1,10 +1,13 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { OnCallStackProvider } from "./contexts/OnCallStack";
 import "./index.css";
 import App from "./App.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <App />
+    <OnCallStackProvider>
+      <App />
+    </OnCallStackProvider>
   </BrowserRouter>
 );
