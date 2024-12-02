@@ -26,7 +26,7 @@
   grid-column: 2;
   grid-row: 1;
   height: 95%;
-  width: 97%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,6 +36,10 @@
 .ui-pane-container {
   grid-column: 2;
   grid-row: 2;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .home-footer {
@@ -118,9 +122,6 @@
 .ecd-header-thread {
   grid-column: 1;
   grid-row: 1;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   border-bottom: var(--ecd-inner-border);
 }
 
@@ -140,6 +141,22 @@
   grid-column: 2;
   grid-row: 2;
   border-left: var(--ecd-inner-border);
+}
+
+.step-arrow {
+  font-size: 42px;
+  margin-right: 10px;
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+.comment-box {
+  margin: 0 10px 0 10px;
+  padding: 5px 10px 5px 10px;
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
 }
 
 .pane-borders {
