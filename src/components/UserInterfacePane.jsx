@@ -1,25 +1,41 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import { StepInformationContext } from "../contexts/StepInformation";
 
 function UserInterfacePane() {
-  const stepInfo = useContext(StepInformationContext);
-  const [userInstructions, setUserInstructions] = useState(
-    stepInfo.steps[stepInfo.currentStep].text
-  );
+  const {
+    stepInfo,
+    setOnCallStack,
+    setDiagramInfo,
+    userInstructions,
+    setUserInstructions,
+  } = useContext(StepInformationContext);
 
   const handlePrevious = () => {
-    if (stepInfo.currentStep > 0) {
-      stepInfo.currentStep--;
-      setUserInstructions(stepInfo.steps[stepInfo.currentStep].text);
-    }
+    if (stepInfo.currentStep === 0) return;
+
+    stepInfo.currentStep--;
+    renderComponents(stepInfo.steps[stepInfo.currentStep]);
   };
 
   const handleNext = () => {
-    if (stepInfo.currentStep < stepInfo.steps.length - 1) {
-      stepInfo.currentStep++;
-      setUserInstructions(stepInfo.steps[stepInfo.currentStep].text);
-    }
+    if (stepInfo.currentStep === stepInfo.steps.length - 1) return;
+
+    stepInfo.currentStep++;
+    renderComponents(stepInfo.steps[stepInfo.currentStep]);
   };
+
+  const renderComponents = (newStep) => {
+    setUserInstructions(newStep.text);
+
+    const { thread, envVars, level } = newStep;
+    setDiagramInfo({ thread, envVars, level });
+
+    setOnCallStack(newStep.callStack);
+  };
+
+  useEffect(() => {
+    renderComponents(stepInfo.steps[stepInfo.currentStep]);
+  }, []);
 
   return (
     <section className="ui-pane-container pane-borders">
