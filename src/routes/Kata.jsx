@@ -1,10 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
+import { StepInformationContext } from "../contexts/StepInformation";
 import SidePane from "../components/SidePane";
 import MainPane from "../components/MainPane";
 import UserInterfacePane from "../components/UserInterfacePane";
 
-function Kata() {
+function Kata({ stepsJson }) {
   const [sufficientDimensions, setSufficientDimensions] = useState(false);
+  const { setStepInfo } = useContext(StepInformationContext);
+
+  useEffect(() => {
+    const { steps } = stepsJson;
+    setStepInfo({ currentStep: 0, steps: steps });
+  }, []);
 
   useEffect(() => {
     function handleResize() {
@@ -12,6 +19,7 @@ function Kata() {
         window.innerWidth > 809 && window.innerHeight > 409
       );
     }
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
