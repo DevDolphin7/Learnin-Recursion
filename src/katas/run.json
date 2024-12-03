@@ -1,45 +1,45 @@
 {
   "steps": [
     {
-      "text": "Hello, world!!!",
-      "thread": ["test"],
-      "envVars": ["test"],
+      "text": "'global' is added to the call stack ",
+      "thread": [],
+      "envVars": [],
       "callStack": [],
       "level": 1
     },
     {
-      "text": "How are you?",
-      "thread": ["Function name yay!"],
-      "envVars": ["one = 'hello'"],
+      "text": "A function 'run' is declared",
+      "thread": ["function run(distance) {}"],
+      "envVars": ["run = Function"],
       "callStack": [],
       "level": 1
     },
     {
-      "text": "Good thanks!!!",
-      "thread": ["Function name yay!"],
-      "envVars": ["one = 'hello'"],
-      "callStack": [{ "name": "run", "args": 2 }],
+      "text": "'run' is invoked with the number 2, which adds run to the call stack",
+      "thread": ["function run(distance) {}", "run(2)"],
+      "envVars": ["run = Function"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 1
+    },
+    {
+      "text": "JavaScript looks for a function called 'run' which it finds it locally and a new diagram is started (the parameter 'distance' takes the value of the argument, 2)",
+      "thread": [],
+      "envVars": ["distance = 2"],
+      "callStack": [{ "name": "run", "args": "2" }],
       "level": 2
     },
     {
-      "text": "Hello, world!!!",
-      "thread": ["test"],
-      "envVars": ["test"],
-      "callStack": [],
-      "level": 1
+      "text": "JavaScript looks for a variable called 'distance' which is found locally as 2",
+      "thread": ["const remainingDistance = distance - 1"],
+      "envVars": ["distance = 2"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
     },
     {
-      "text": "How are you?",
-      "thread": ["Function name yay!"],
-      "envVars": ["one = 'hello'"],
-      "callStack": [],
-      "level": 1
-    },
-    {
-      "text": "Good thanks!!!",
-      "thread": ["Function name yay!"],
-      "envVars": ["one = 'hello'"],
-      "callStack": [{ "name": "run", "args": 2 }],
+      "text": "remainingDistance is set to the value of 1 as distance is found locally as 2",
+      "thread": ["const remainingDistance = 2 - 1"],
+      "envVars": ["distance = 2", "remainingDistance = 1"],
+      "callStack": [{ "name": "run", "args": "2" }],
       "level": 2
     }
   ]
