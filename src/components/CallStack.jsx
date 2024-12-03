@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { OnCallStackContext } from "../contexts/OnCallStack";
+import { StepInformationContext } from "../contexts/StepInformation";
 import CallStackItem from "./CallStackItem";
 
 function CallStack() {
-  const onCallStack = useContext(OnCallStackContext);
+  const { onCallStack } = useContext(StepInformationContext);
 
   const invokedCallStack = onCallStack.map((callStackObj, index) => (
     <CallStackItem
