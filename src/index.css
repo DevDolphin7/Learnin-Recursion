@@ -106,8 +106,10 @@
 
 .new-ecd-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  height: fit-content;
 }
 
 .ecd-header-thread,
@@ -116,6 +118,11 @@
 .ecd-main-environment-variables {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.ecd-main-thread,
+.ecd-main-environment-variables {
   align-items: flex-start;
 }
 
