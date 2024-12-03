@@ -1,0 +1,46 @@
+{
+  "steps": [
+    {
+      "text": "Hello, world!!!",
+      "thread": ["test"],
+      "envVars": ["test"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "How are you?",
+      "thread": ["Function name yay!"],
+      "envVars": ["one = 'hello'"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "Good thanks!!!",
+      "thread": ["Function name yay!"],
+      "envVars": ["one = 'hello'"],
+      "callStack": [{ "name": "run", "args": 2 }],
+      "level": 2
+    },
+    {
+      "text": "Hello, world!!!",
+      "thread": ["test"],
+      "envVars": ["test"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "How are you?",
+      "thread": ["Function name yay!"],
+      "envVars": ["one = 'hello'"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "Good thanks!!!",
+      "thread": ["Function name yay!"],
+      "envVars": ["one = 'hello'"],
+      "callStack": [{ "name": "run", "args": 2 }],
+      "level": 2
+    }
+  ]
+}
