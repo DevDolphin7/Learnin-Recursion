@@ -63,11 +63,6 @@
   align-items: center;
 }
 
-.test-class.resize {
-  max-width: 100%;
-  height: auto;
-}
-
 .call-stack-container {
   grid-column: 1;
   grid-row: 1 / span 2;
@@ -101,11 +96,12 @@
 .execution-context-diagram-container {
   width: 96%;
   height: 94%;
+  min-height: 100px;
   margin: 2%;
   display: grid;
   grid-template:
-    "a b" 15%
-    "a b" 85% / 70% 30%;
+    "a b" 30px
+    "a b" auto / 70% 30%;
   border: var(--ecd-outer-border);
 }
 
@@ -147,14 +143,17 @@
 .ecd-main-thread {
   grid-column: 1;
   grid-row: 2;
+  width: 96%;
+  padding-top: 5px;
   display: block;
 }
 
 .ecd-main-environment-variables {
   grid-column: 2;
   grid-row: 2;
-  border-left: var(--ecd-inner-border);
+  padding-top: 5px;
   display: block;
+  border-left: var(--ecd-inner-border);
 }
 
 .ecd-main-thread p,
