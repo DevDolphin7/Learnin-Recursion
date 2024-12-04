@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --ecd-outer-border: 3px solid pink;
   --ecd-inner-border: 3px solid blue;
@@ -142,12 +147,20 @@
 .ecd-main-thread {
   grid-column: 1;
   grid-row: 2;
+  display: block;
 }
 
 .ecd-main-environment-variables {
   grid-column: 2;
   grid-row: 2;
   border-left: var(--ecd-inner-border);
+  display: block;
+}
+
+.ecd-main-thread p,
+.ecd-main-environment-variables p {
+  display: flex;
+  justify-content: center;
 }
 
 .step-arrow {
