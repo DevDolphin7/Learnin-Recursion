@@ -3,14 +3,17 @@ import { StepInformationContext } from "../contexts/StepInformation";
 import RecursiveExecutionContextDiagram from "./ExecutionContextDiagram";
 
 function ExecutionContextDiagram() {
-  const { diagramInfo } = useContext(StepInformationContext);
+  const { stepInfo, diagramInfo } = useContext(StepInformationContext);
   const { thread, envVars, level } = diagramInfo;
-
-  if (level === 0) return;
+  let levelAbove = null;
 
   if (level > 4) {
     alert("More than 4 recursive loops, this app wasn't designed for that!");
     return;
+  }
+
+  if (level > 1) {
+    levelAbove = level;
   }
 
   const recursiveComponentCall = () => {
@@ -19,13 +22,50 @@ function ExecutionContextDiagram() {
   };
 
   const threadContent = (newDiagram = false) => {
-    const formattedThreads = thread.map((lineOfJS, index) => (
-      <p key={index}>{lineOfJS}</p>
-    ));
-    if (newDiagram) {
-      formattedThreads.push(recursiveComponentCall());
+    const threadContent = [];
+
+    if (levelAbove) {
+      threadContent.push(
+        stepInfo.steps[levelAbove].thread.map((lineOfJS, index) => {
+          return <p key={index}>{lineOfJS}</p>;
+        })
+      );
     }
-    return formattedThreads;
+
+    if (level === 1) {
+      threadContent.push(
+        thread.map((lineOfJS, index) => {
+          return <p key={index}>{lineOfJS}</p>;
+        })
+      );
+    }
+
+    if (newDiagram) {
+      threadContent.push(recursiveComponentCall());
+    }
+
+    return <div className="ecd-main-thread">{threadContent}</div>;
+  };
+
+  const envVarContent = () => {
+    const envVarContent = [];
+    if (levelAbove) {
+      envVarContent.push(
+        stepInfo.steps[levelAbove].envVars.map((envVar, index) => (
+          <p key={index}>{envVar}</p>
+        ))
+      );
+    }
+
+    if (level === 1) {
+      envVarContent.push(
+        envVars.map((envVar, index) => <p key={index}>{envVar}</p>)
+      );
+    }
+
+    return (
+      <div className="ecd-main-environment-variables">{envVarContent}</div>
+    );
   };
 
   return (
@@ -40,14 +80,10 @@ function ExecutionContextDiagram() {
           {threadContent({ newDiagram: true })}
         </div>
       ) : (
-        <div className="ecd-main-thread">{threadContent()}</div>
+        <>{threadContent()}</>
       )}
 
-      <div className="ecd-main-environment-variables">
-        {envVars.map((envVar, index) => (
-          <p key={index}>{envVar}</p>
-        ))}
-      </div>
+      {envVarContent()}
     </section>
   );
 }
