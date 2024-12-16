@@ -8,7 +8,7 @@ export function StepInformationProvider(props) {
     steps: [
       {
         text: "",
-        thread: [],
+        threads: [],
         envVars: [],
         callStack: [],
         level: 1,
@@ -16,8 +16,12 @@ export function StepInformationProvider(props) {
     ],
   });
 
-  const { thread, envVars, level } = stepInfo.steps[0];
-  const [diagramInfo, setDiagramInfo] = useState({ thread, envVars, level });
+  const { threads, envVars, level } = stepInfo.steps[0];
+  const [diagramInfo, setDiagramInfo] = useState({
+    threads,
+    envVars,
+    maxLevelAtStep: level,
+  });
 
   const { text } = stepInfo.steps[0];
   const [userInstructions, setUserInstructions] = useState(text);
@@ -30,12 +34,12 @@ export function StepInformationProvider(props) {
       value={{
         stepInfo,
         setStepInfo,
-        onCallStack,
-        setOnCallStack,
         diagramInfo,
         setDiagramInfo,
         userInstructions,
         setUserInstructions,
+        onCallStack,
+        setOnCallStack,
       }}
     >
       {props.children}
