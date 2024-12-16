@@ -2,45 +2,229 @@
   "steps": [
     {
       "text": "'global' is added to the call stack ",
-      "thread": [],
+      "threads": [],
       "envVars": [],
       "callStack": [],
       "level": 1
     },
     {
       "text": "A function 'run' is declared",
-      "thread": ["function run(distance) {}"],
+      "threads": ["function run(distance) {}"],
       "envVars": ["run = Function"],
       "callStack": [],
       "level": 1
     },
     {
       "text": "'run' is invoked with the number 2, which adds run to the call stack",
-      "thread": ["function run(distance) {}", "run(2)"],
+      "threads": ["function run(distance) {}", "run(2)"],
       "envVars": ["run = Function"],
       "callStack": [{ "name": "run", "args": "2" }],
       "level": 1
     },
     {
       "text": "JavaScript looks for a function called 'run' which it finds it locally and a new diagram is started (the parameter 'distance' takes the value of the argument, 2)",
-      "thread": [],
+      "threads": [],
       "envVars": ["distance = 2"],
       "callStack": [{ "name": "run", "args": "2" }],
       "level": 2
     },
     {
       "text": "JavaScript looks for a variable called 'distance' which is found locally as 2",
-      "thread": ["const remainingDistance = distance - 1"],
+      "threads": ["const remainingDistance = distance - 1"],
       "envVars": ["distance = 2"],
       "callStack": [{ "name": "run", "args": "2" }],
       "level": 2
     },
     {
-      "text": "remainingDistance is set to the value of 1 as distance is found locally as 2",
-      "thread": ["const remainingDistance = 2 - 1"],
+      "text": "the variable 'distance' is found locally as the value 2",
+      "threads": ["const remainingDistance = 2 - 1"],
+      "envVars": ["distance = 2"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "remainingDistance is stored to the value of 1",
+      "threads": ["const remainingDistance = 1"],
       "envVars": ["distance = 2", "remainingDistance = 1"],
       "callStack": [{ "name": "run", "args": "2" }],
       "level": 2
+    },
+    {
+      "text": "It checks if remainingDisance is > 0",
+      "threads": ["if (remainingDisance > 0)"],
+      "envVars": ["distance = 2", "remainingDistance = 1"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "remainingDisance is bigger than 0 so JavaScript will proceed into the code block",
+      "threads": ["if (1 > 0) // true"],
+      "envVars": ["distance = 2", "remainingDistance = 1"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "The console log needs remainingDistance",
+      "threads": [
+        "if (1 > 0) // true",
+        "console.log( `${remainingDistance} km left` )"
+      ],
+      "envVars": ["distance = 2", "remainingDistance = 1"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "The console log then appears in the terminal",
+      "threads": ["if (1 > 0) // true", "console.log( `${1} km left` )"],
+      "envVars": ["distance = 2", "remainingDistance = 1"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "Next, run is invoked with remaining distance",
+      "threads": ["if (1 > 0) // true", "run( remainingDistance )"],
+      "envVars": ["distance = 2", "remainingDistance = 1"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "remainingDistance is evaluated",
+      "threads": ["if (1 > 0) // true", "run( 1 )"],
+      "envVars": ["distance = 2", "remainingDistance = 1"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "run(1) is added to the call stack, and a new execution context diagram is opened",
+      "threads": [],
+      "envVars": [],
+      "callStack": [
+        { "name": "run", "args": "2" },
+        { "name": "run", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "The parameter distance is set to the value of the argument, 1",
+      "threads": [],
+      "envVars": ["distance = 1"],
+      "callStack": [
+        { "name": "run", "args": "2" },
+        { "name": "run", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "The value of remainingDistance requires distance",
+      "threads": ["const remainingDistance = distance - 1"],
+      "envVars": ["distance = 1"],
+      "callStack": [
+        { "name": "run", "args": "2" },
+        { "name": "run", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "distance is found locally as value 1",
+      "threads": ["const remainingDistance = 1 - 1"],
+      "envVars": ["distance = 1"],
+      "callStack": [
+        { "name": "run", "args": "2" },
+        { "name": "run", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "remainingDistance is set to the value 0",
+      "threads": ["const remainingDistance = 0"],
+      "envVars": ["distance = 1", "remainingDistance = 0"],
+      "callStack": [
+        { "name": "run", "args": "2" },
+        { "name": "run", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "The if statement requires remainingDistance",
+      "threads": ["if ( remainingDistance > 0 )"],
+      "envVars": ["distance = 1", "remainingDistance = 0"],
+      "callStack": [
+        { "name": "run", "args": "2" },
+        { "name": "run", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "remainingDistance is found locally as value 0",
+      "threads": ["if ( 0 > 0 ) // false"],
+      "envVars": ["distance = 1", "remainingDistance = 0"],
+      "callStack": [
+        { "name": "run", "args": "2" },
+        { "name": "run", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "The if statement evaluates to false, so JavaScript moves on to the else block",
+      "threads": ["else {"],
+      "envVars": ["distance = 1", "remainingDistance = 0"],
+      "callStack": [
+        { "name": "run", "args": "2" },
+        { "name": "run", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "The console log prints to the terminal",
+      "threads": ["else {", "Console.log( `I've finished` )"],
+      "envVars": ["distance = 1", "remainingDistance = 0"],
+      "callStack": [
+        { "name": "run", "args": "2" },
+        { "name": "run", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "There is no more code to run in the function invocation so it's taken off the call stack",
+      "threads": [],
+      "envVars": ["distance = 1", "remainingDistance = 0"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 3
+    },
+    {
+      "text": "As we took it off the call stack, we can close the execution context diagram",
+      "threads": ["if (1 > 0) // true", "run( 1 )"],
+      "envVars": ["distance = 2", "remainingDistance = 1"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "After this stage of the thread, there is no more code to execute again!",
+      "threads": ["if (1 > 0) // true", "run( 1 )"],
+      "envVars": ["distance = 2", "remainingDistance = 1"],
+      "callStack": [{ "name": "run", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "We can take the invocation off the call stack and close the execution context diagram",
+      "threads": ["function run(distance) {}", "run(2)"],
+      "envVars": ["run = Function"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "Again, we've run out of code! At this point, there is no more code in the file so the execution context diagram would be closed and global taken off the call stack.",
+      "threads": ["function run(distance) {}", "run(2)"],
+      "envVars": ["run = Function"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "At this point, there is no more code in the file so the execution context diagram would be closed and global taken off the call stack.",
+      "threads": [],
+      "envVars": [],
+      "callStack": [],
+      "level": 1
     }
   ]
 }
