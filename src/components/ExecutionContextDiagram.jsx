@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { StepInformationContext } from "../contexts/StepInformation";
 import RecursiveExecutionContextDiagram from "./ExecutionContextDiagram";
+import { definePriorLevelSteps } from "../utils/utils";
 
-function ExecutionContextDiagram() {
+function ExecutionContextDiagram({ level }) {
   const { stepInfo, diagramInfo } = useContext(StepInformationContext);
-  const { thread, envVars, level } = diagramInfo;
-  let levelAbove = null;
+  const { threads, envVars, maxLevelAtStep } = diagramInfo;
+  let formattedPriorLevelSteps = [];
+  level = level === undefined ? maxLevelAtStep || 1 : level;
 
   if (level > 4) {
     alert("More than 4 recursive loops, this app wasn't designed for that!");
@@ -13,48 +15,49 @@ function ExecutionContextDiagram() {
   }
 
   if (level > 1) {
-    levelAbove = level;
+    const priorLevelStep = definePriorLevelSteps(stepInfo);
+    formattedPriorLevelSteps = Object.values(priorLevelStep).reverse();
   }
 
-  const recursiveComponentCall = () => {
-    diagramInfo.level--;
-    return <RecursiveExecutionContextDiagram key={diagramInfo.level} />;
-  };
-
-  const threadContent = (newDiagram = false) => {
+  const defineThreadContent = (newDiagram = false) => {
     const threadContent = [];
 
-    if (levelAbove) {
-      threadContent.push(
-        stepInfo.steps[levelAbove].thread.map((lineOfJS, index) => {
-          return <p key={index}>{lineOfJS}</p>;
-        })
-      );
+    for (let i = 4; i >= 2; i--) {
+      if (level === i) {
+        threadContent.push(
+          stepInfo.steps[formattedPriorLevelSteps[i - 2]].threads.map(
+            (lineOfJS, index) => <p key={index}>{lineOfJS}</p>
+          )
+        );
+      }
     }
 
     if (level === 1) {
       threadContent.push(
-        thread.map((lineOfJS, index) => {
-          return <p key={index}>{lineOfJS}</p>;
-        })
+        threads.map((lineOfJS, index) => <p key={index}>{lineOfJS}</p>)
       );
     }
 
     if (newDiagram) {
-      threadContent.push(recursiveComponentCall());
+      threadContent.push(
+        <RecursiveExecutionContextDiagram key={level} level={level - 1} />
+      );
     }
 
-    return <div className="ecd-main-thread">{threadContent}</div>;
+    return threadContent;
   };
 
-  const envVarContent = () => {
+  const defineEnvVarContent = () => {
     const envVarContent = [];
-    if (levelAbove) {
-      envVarContent.push(
-        stepInfo.steps[levelAbove].envVars.map((envVar, index) => (
-          <p key={index}>{envVar}</p>
-        ))
-      );
+
+    for (let i = 4; i >= 2; i--) {
+      if (level === i) {
+        envVarContent.push(
+          stepInfo.steps[formattedPriorLevelSteps[i - 2]].envVars.map(
+            (envVar, index) => <p key={index}>{envVar}</p>
+          )
+        );
+      }
     }
 
     if (level === 1) {
@@ -63,9 +66,7 @@ function ExecutionContextDiagram() {
       );
     }
 
-    return (
-      <div className="ecd-main-environment-variables">{envVarContent}</div>
-    );
+    return envVarContent;
   };
 
   return (
@@ -77,13 +78,17 @@ function ExecutionContextDiagram() {
 
       {level !== 1 ? (
         <div className="new-ecd-container">
-          {threadContent({ newDiagram: true })}
+          <div className="ecd-main-thread">
+            {defineThreadContent({ newDiagram: true })}
+          </div>
         </div>
       ) : (
-        <>{threadContent()}</>
+        <div className="ecd-main-thread">{defineThreadContent()}</div>
       )}
 
-      {envVarContent()}
+      <div className="ecd-main-environment-variables">
+        {defineEnvVarContent()}
+      </div>
     </section>
   );
 }
