@@ -4,7 +4,7 @@ import SidePane from "../components/SidePane";
 import MainPane from "../components/MainPane";
 import UserInterfacePane from "../components/UserInterfacePane";
 
-function Kata({ stepsJson }) {
+function Kata({ stepsJson, codeImage }) {
   const [sufficientDimensions, setSufficientDimensions] = useState(false);
   const { setStepInfo } = useContext(StepInformationContext);
 
@@ -29,7 +29,7 @@ function Kata({ stepsJson }) {
     <div className="page-container">
       {sufficientDimensions ? (
         <>
-          <SidePane />
+          <SidePane codeImage={codeImage} />
           <MainPane />
           <UserInterfacePane />
         </>
