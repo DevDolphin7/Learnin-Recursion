@@ -4,33 +4,42 @@ import { StepInformationContext } from "../contexts/StepInformation";
 function UserInterfacePane() {
   const {
     stepInfo,
-    setOnCallStack,
+    setStepInfo,
     setDiagramInfo,
     userInstructions,
     setUserInstructions,
+    setOnCallStack,
   } = useContext(StepInformationContext);
 
   const handlePrevious = () => {
     if (stepInfo.currentStep === 0) return;
 
-    stepInfo.currentStep--;
-    renderComponents(stepInfo.steps[stepInfo.currentStep]);
+    setStepInfo((currentStepInfo) => {
+      renderComponents(currentStepInfo.steps[currentStepInfo.currentStep - 1]);
+      return { ...currentStepInfo, currentStep: stepInfo.currentStep - 1 };
+    });
   };
 
   const handleNext = () => {
     if (stepInfo.currentStep === stepInfo.steps.length - 1) return;
 
-    stepInfo.currentStep++;
-    renderComponents(stepInfo.steps[stepInfo.currentStep]);
+    setStepInfo((currentStepInfo) => {
+      renderComponents(currentStepInfo.steps[currentStepInfo.currentStep + 1]);
+      return { ...currentStepInfo, currentStep: stepInfo.currentStep + 1 };
+    });
   };
 
   const renderComponents = (newStep) => {
     setUserInstructions(newStep.text);
 
-    const { thread, envVars, level } = newStep;
-    setDiagramInfo({ thread, envVars, level });
+    const { threads, envVars, level } = newStep;
+    setDiagramInfo({
+      threads: [...threads],
+      envVars: [...envVars],
+      maxLevelAtStep: level,
+    });
 
-    setOnCallStack(newStep.callStack);
+    setOnCallStack([...newStep.callStack]);
   };
 
   useEffect(() => {
