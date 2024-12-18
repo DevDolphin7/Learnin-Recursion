@@ -83,6 +83,11 @@ img {
   min-width: 80%;
 }
 
+.insufficient-screen-width {
+  grid-column: 1 / span 2;
+  text-align: center;
+}
+
 .header-container {
   height: 70px;
   display: flex;
