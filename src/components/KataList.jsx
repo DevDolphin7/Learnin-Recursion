@@ -36,7 +36,6 @@ function KataList({ katas }) {
           <img src={codePreview}></img>
         </div>
       ) : null}
-      ;
     </>
   );
 }
