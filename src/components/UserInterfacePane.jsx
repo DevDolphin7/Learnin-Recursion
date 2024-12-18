@@ -47,7 +47,7 @@ function UserInterfacePane() {
   }, []);
 
   return (
-    <section className="ui-pane-container pane-borders">
+    <section className="ui-pane-container">
       <div className="comment-box">
         <p>{userInstructions}</p>
       </div>

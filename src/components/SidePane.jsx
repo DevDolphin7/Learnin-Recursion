@@ -2,7 +2,7 @@ import CallStack from "./CallStack";
 
 function SidePane({ codeImage }) {
   return (
-    <section className="side-pane-container pane-borders">
+    <section className="side-pane-container">
       <section className="code-image">
         <img
           src={codeImage}

@@ -2,7 +2,7 @@ import ExecutionContextDiagram from "./ExecutionContextDiagram";
 
 function MainPane() {
   return (
-    <section className="main-pane-container pane-borders">
+    <section className="main-pane-container">
       <ExecutionContextDiagram />
     </section>
   );
