@@ -4,7 +4,9 @@ import Kata from "./routes/Kata";
 
 // Import any new JSON files and code images here
 import run from "./katas/run.json";
-import runCodeImg from "./assets/run-code-screenshot.png";
+import runImage from "./assets/run-code-screenshot.png";
+import findFactorial from "./katas/find-factorial.json";
+import findFactorialImage from "./assets/find-factorial-screenshot.png";
 
 function App() {
   // Add any new kata objects here
@@ -13,7 +15,13 @@ function App() {
       name: "Recursive run",
       url: "/recursive-run",
       json: run,
-      image: runCodeImg,
+      image: runImage,
+    },
+    {
+      name: "Find Factorial",
+      url: "/find-factorial",
+      json: findFactorial,
+      image: findFactorialImage,
     },
   ];
 
