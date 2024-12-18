@@ -35,7 +35,7 @@ function Home({ katas }) {
               <a href="https://www.onlinewebfonts.com/icon">svg icons</a> is
               licensed by CC BY 4.0
             </p>
-            <p>Created by Dan Olver for Northcoders.</p>
+            <p>Created by Dan Olver for Northcoders</p>
           </footer>
         </>
       ) : (
