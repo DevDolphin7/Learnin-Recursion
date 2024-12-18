@@ -1,0 +1,298 @@
+{
+  "steps": [
+    {
+      "text": "'global' is added to the call stack",
+      "threads": [],
+      "envVars": [],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "A function called findFactorial is put into the local environment variables",
+      "threads": ["function findFactorial (number) {}"],
+      "envVars": ["findFactorial = Function"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "JavaScript tries to console.log() something but needs to find out what to log first!",
+      "threads": ["console.log( findFactorial(2) )"],
+      "envVars": ["findFactorial = Function"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "findFactorial(2) is added to the call stack and a new execution context diagram is opened",
+      "threads": [],
+      "envVars": [],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "findFactorial was passed the number 2 as an argument, so parameter number becomes 2",
+      "threads": [],
+      "envVars": ["number = 2"],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "number is locally found as value 2, which is not 0",
+      "threads": ["if (number === 0)"],
+      "envVars": ["number = 2"],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "number is locally found as value 2, which is not 0",
+      "threads": ["if (2 === 0)"],
+      "envVars": ["number = 2"],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "We move to the else block",
+      "threads": ["else {", "return number * findFactorial(number - 1)"],
+      "envVars": ["number = 2"],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "number is found locally at value 2",
+      "threads": ["else {", "return 2 * findFactorial(2 - 1)"],
+      "envVars": ["number = 2"],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "To work out what to return, findFactorial will be added to the call stack, this time invoked with 1",
+      "threads": ["else {", "return 2 * findFactorial(1)"],
+      "envVars": ["number = 2"],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "We add findFactorial to the call stack invoked with 1 and open a new execution context diagram",
+      "threads": [],
+      "envVars": [],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "This time the argument was 1, so number is locally set as the value 1",
+      "threads": [],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "We check if number === 0",
+      "threads": ["if (number === 0)"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "number is locally found as value 1, so we move to the else block",
+      "threads": ["if (1 === 0)"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "We move to the else block",
+      "threads": ["else {", "return number * findFactorial(number - 1)"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "number is locally found as value 1 again, so the values are populated",
+      "threads": ["else {", "return 1 * findFactorial(1 - 1)"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "To work out what to return, we need to add findFactorial(1) to the call stack and open a new execution context diagram!",
+      "threads": ["else {", "return 1 * findFactorial(0)"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "To work out what to return, we need to add findFactorial(1) to the call stack and open a new execution context diagram!",
+      "threads": ["else {", "return 1 * findFactorial(0)"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "To work out what to return, we need to add findFactorial(1) to the call stack and open a new execution context diagram!",
+      "threads": [],
+      "envVars": [],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" },
+        { "name": "findFactorial", "args": "0" }
+      ],
+      "level": 4
+    },
+    {
+      "text": "number is now locally set as 0",
+      "threads": [],
+      "envVars": ["number = 0"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" },
+        { "name": "findFactorial", "args": "0" }
+      ],
+      "level": 4
+    },
+    {
+      "text": "We check if number === 0",
+      "threads": ["if (number === 0)"],
+      "envVars": ["number = 0"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" },
+        { "name": "findFactorial", "args": "0" }
+      ],
+      "level": 4
+    },
+    {
+      "text": "This time number is 0 so we move into the if block",
+      "threads": ["if (0 === 0)"],
+      "envVars": ["number = 0"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" },
+        { "name": "findFactorial", "args": "0" }
+      ],
+      "level": 4
+    },
+    {
+      "text": "A return statement is declared with nothing else to compute, so JavaScript takes it off the call stack, closing the execution context diagram. The function returned 1.",
+      "threads": ["if (0 === 0) {", "return 1"],
+      "envVars": ["number = 0"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" },
+        { "name": "findFactorial", "args": "0" }
+      ],
+      "level": 4
+    },
+    {
+      "text": "findFactorial(0) has been worked out, it returned the number 1",
+      "threads": ["else {", "return 1 * findFactorial(0)"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "findFactorial(0) has been worked out, it returned the number 1",
+      "threads": ["else {", "return 1 * 1"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "JavaScript multiplies the numbers and is able to return from this function as well. This function returns 1 * 1, which is also 1",
+      "threads": ["else {", "return 1 * 1"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "JavaScript multiplies the numbers and is able to return from this function as well. This function returns 1 * 1, which is also 1",
+      "threads": ["else {", "return 1"],
+      "envVars": ["number = 1"],
+      "callStack": [
+        { "name": "findFactorial", "args": "2" },
+        { "name": "findFactorial", "args": "1" }
+      ],
+      "level": 3
+    },
+    {
+      "text": "The return result of findFactorial(1) has now been computed, it returned 1.",
+      "threads": ["else {", "return 2 * findFactorial(1)"],
+      "envVars": ["number = 2"],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "This function can now compute what to return, 2 * 1, so it will return 2",
+      "threads": ["else {", "return 2 * 1"],
+      "envVars": ["number = 2"],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "This function is returning 2 so can also be taken off the call stack and it's execution context diagram closed!",
+      "threads": ["else {", "return 2"],
+      "envVars": ["number = 2"],
+      "callStack": [{ "name": "findFactorial", "args": "2" }],
+      "level": 2
+    },
+    {
+      "text": "The console.log() that JavaScript wants to run now has a return result from findFactorial(2) - it returned 2",
+      "threads": ["console.log( findFactorial(2) )"],
+      "envVars": ["findFactorial = Function"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "The console.log() that JavaScript wants to run now has a return result from findFactorial(2) - it returned 2",
+      "threads": ["console.log( 2 )"],
+      "envVars": ["findFactorial = Function"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "The console prints 2",
+      "threads": ["console.log( 2 )"],
+      "envVars": ["findFactorial = Function"],
+      "callStack": [],
+      "level": 1
+    },
+    {
+      "text": "There is no more code to execute, so global is closed down!",
+      "threads": [""],
+      "envVars": ["findFactorial = Function"],
+      "callStack": [],
+      "level": 1
+    }
+  ]
+}
