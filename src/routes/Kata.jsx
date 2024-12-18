@@ -1,4 +1,5 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { SufficientScreenDimensionsContext } from "../contexts/SufficientScreenDimensions";
 import { StepInformationContext } from "../contexts/StepInformation";
 import Header from "../components/Header";
 import SidePane from "../components/SidePane";
@@ -6,7 +7,9 @@ import MainPane from "../components/MainPane";
 import UserInterfacePane from "../components/UserInterfacePane";
 
 function Kata({ stepsJson, codeImage }) {
-  const [sufficientDimensions, setSufficientDimensions] = useState(false);
+  const { sufficientDimensions, setSufficientDimensions } = useContext(
+    SufficientScreenDimensionsContext
+  );
   const { setStepInfo } = useContext(StepInformationContext);
 
   useEffect(() => {
@@ -37,7 +40,7 @@ function Kata({ stepsJson, codeImage }) {
             <UserInterfacePane />
           </>
         ) : (
-          <h1 style={{ gridColumn: "1 / span 2" }}>
+          <h1 className="insufficient-screen-width">
             The screen dimensions are too small to handle all the recursion!
           </h1>
         )}
