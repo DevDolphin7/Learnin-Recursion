@@ -32,10 +32,11 @@ function Home({ katas }) {
           <footer className="home-footer">
             <p>
               Icons made from{" "}
-              <a href="https://www.onlinewebfonts.com/icon">svg icons</a> is
+              <a href="https://www.onlinewebfonts.com/icon" target="_blank">svg icons</a> is
               licensed by CC BY 4.0
             </p>
-            <p>Created by Dan Olver for Northcoders</p>
+            <p>Created by <a href="https://github.com/DevDolphin7/Learnin-Recursion" target="_blank">Dan Olver</a> for <a href="https://northcoders.com/" target="_blank">Northcoders</a>
+            </p>
           </footer>
         </>
       ) : (
